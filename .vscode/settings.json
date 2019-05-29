@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "utils.h": "c",
+        "typeinfo": "c"
+    }
+}

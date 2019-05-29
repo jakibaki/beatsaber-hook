@@ -4,31 +4,32 @@
 
 #include "inline-hook/inlineHook.h"
 
-struct cs_string {
+typedef struct {
     char padding[0x8];
     uint len;
     char str[];
-};
+} cs_string;
 
 
-
-MAKE_HOOK(BeatmapDataSO_ctor, 0x109D0D4, void, void* _this)
+//public static bool VerifySignature(byte[] data, byte[] signatureData); // RVA: 0x10532A8 Offset: 0x10532A8
+MAKE_HOOK(DataEncryper_VerifySignature, 0x010532a8, int, void* data, void* signatureData)
 {
-    __android_log_write(ANDROID_LOG_INFO, "QuestHook", "BeatmapDataSO_ctor called!");
-    BeatmapDataSO_ctor(_this);
+    return 1;
 }
 
-MAKE_HOOK(BeatmapDataSO_set_BeatmapData, 0x109D0B0, void, void* _this, void* beatmapdata) {
-    BeatmapDataSO_set_BeatmapData(_this, beatmapdata); // Calls original
-    __android_log_write(ANDROID_LOG_INFO, "QuestHook", "Set_beatmapdata called!");
+
+//	public void .ctor(BeatmapLineData[] beatmapLinesData, BeatmapEventData[] beatmapEventData); // RVA: 0x1097B80 Offset: 0x1097B80
+MAKE_HOOK(BeatmapData_ctor, 0x1097B80, void, void* _this, void* beatmapLinesData, void* BeatmapEventData) {
+    BeatmapData_ctor(_this, beatmapLinesData, BeatmapEventData);
+    __android_log_write(ANDROID_LOG_INFO, "QuestHook", "BeatmapData_ctor called!");
 }
 
 
 void hook()
 {
-    INSTALL_HOOK(BeatmapDataSO_ctor);
-    INSTALL_HOOK(BeatmapDataSO_set_BeatmapData);
-    
+    INSTALL_HOOK(DataEncryper_VerifySignature);
+    INSTALL_HOOK(BeatmapData_ctor);
+
     __android_log_write(ANDROID_LOG_INFO, "QuestHook", "done hoooking!");
 }
 

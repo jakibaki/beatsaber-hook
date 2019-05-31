@@ -1,0 +1,8 @@
+.vscode/*
+modloader/.vscode/*
+mod-redirassets/.vscode/*
+modloader/libs/*
+modloader/obj/*
+
+mod-redirassets/libs/*
+mod-redirassets/obj/*

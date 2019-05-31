@@ -2,6 +2,7 @@
 
 #include <jni.h>
 
+#include "utils.h"
 #include <android/log.h>
 #include <string.h>
 #include <stdio.h>
@@ -69,4 +70,14 @@ long getRealOffset(long offset) // calculate dump.cs address + lib.so base addre
         location = baseAddr("/data/app/com.beatgames.beatsaber-1/lib/arm/libil2cpp.so"); // replace the com.package.name with the package name of the app you are modding.
     }
     return location + offset;
+}
+
+
+
+void csstrtostr(cs_string* in, char* out)
+{
+    for(int i = 0; i < in->len; i++) {
+        out[i] = in->str[i*2];
+    }
+    out[in->len] = '\0';
 }

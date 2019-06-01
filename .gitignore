@@ -6,3 +6,6 @@ modloader/obj/*
 
 mod-sample/libs/*
 mod-sample/obj/*
+
+customcolors/libs/*
+customcolors/obj/*

@@ -27,3 +27,5 @@ retval hook_ ## name(__VA_ARGS__)
 #define INSTALL_HOOK_NAT(name) \
 registerInlineHook((uint32_t)(addr_ ## name), (uint32_t)hook_ ## name, (uint32_t **)&name);\
 inlineHook((uint32_t)(addr_ ## name));\
+
+void csstrtostr(cs_string* in, char* out);

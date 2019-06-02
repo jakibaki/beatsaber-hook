@@ -15,11 +15,6 @@
 #include "../shared/inline-hook/inlineHook.h"
 #include "../shared/utils/utils.h"
 
-#define ASSETS_PATH "/data/app/com.beatgames.beatsaber-1/base.apk/assets/bin/Data/"
-#define ASSETS_FAKE_PATH "/sdcard/Android/data/com.beatgames.beatsaber/files/redirected_assets/"
-
-
-
 
 MAKE_HOOK_NAT(open_nat, open, int, char* path, int oflag, mode_t mode)
 {

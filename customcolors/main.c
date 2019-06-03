@@ -9,13 +9,13 @@
 #include "../shared/inline-hook/inlineHook.h"
 #include "../shared/utils/utils.h"
 
-const float left_r = 1.05f;
-const float left_g = 0.0f;
-const float left_b = 2.188f;
+float left_r = 0.0f;
+float left_g = 0.0f;
+float left_b = 0.0f;
 
-const float right_r = 0.0f;
-const float right_g = 1.0f;
-const float right_b = 0.0f;
+float right_r = 0.0f;
+float right_g = 0.0f;
+float right_b = 0.0f;
 
 typedef struct __attribute__((__packed__)) {
     float r;
@@ -62,7 +62,10 @@ MAKE_HOOK(get_color, 0x10E960C, Color, void* self)
 
 __attribute__((constructor)) void lib_main()
 {
-    srand(time(NULL));
+    FILE* config = fopen("/sdcard/Android/data/com.beatgames.beatsaber/files/mods/customcolors.cfg", "r");
+    fscanf(config, "%f %f %f %f %f %f", &left_r, &left_g, &left_b, &right_r, &right_g, &right_b);
+    fclose(config);
+
     INSTALL_HOOK(get_colorA);
     INSTALL_HOOK(get_colorB);
     INSTALL_HOOK(get_color);

@@ -15,12 +15,6 @@
 #include "../shared/inline-hook/inlineHook.h"
 #include "../shared/utils/utils.h"
 
-//public static bool VerifySignature(byte[] data, byte[] signatureData); // RVA: 0x10532A8 Offset: 0x10532A8
-MAKE_HOOK(DataEncryper_VerifySignature, 0x010532a8, int, void *data, void *signatureData)
-{
-    return 1;
-}
-
 #define MOD_PATH "/sdcard/Android/data/com.beatgames.beatsaber/files/mods/"
 #define MOD_TEMP_PATH "/data/data/com.beatgames.beatsaber/cache/curmod.so"
 
@@ -56,18 +50,8 @@ void load_mods()
     __android_log_write(ANDROID_LOG_INFO, "QuestHook", "Done loading mods!");
 }
 
-void hook()
-{
-    __android_log_write(ANDROID_LOG_INFO, "QuestHook", "Installing default-hooks!");
-
-    INSTALL_HOOK(DataEncryper_VerifySignature);
-
-    __android_log_write(ANDROID_LOG_INFO, "QuestHook", "done hoooking!");
-}
-
 __attribute__((constructor)) void lib_main()
 {
     __android_log_write(ANDROID_LOG_INFO, "QuestHook", "Welcome!");
-    hook();
     load_mods();
 }

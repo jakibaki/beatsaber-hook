@@ -24,7 +24,7 @@ typedef struct __attribute__((__packed__)) {
     float a;
 } Color;
 
-MAKE_HOOK(get_colorA, 0x104B6C8, Color, void* self)
+MAKE_HOOK(get_colorA, 0x130C350, Color, void* self)
 {
     Color color = {0};
     color.r = left_r;
@@ -34,7 +34,7 @@ MAKE_HOOK(get_colorA, 0x104B6C8, Color, void* self)
     return color;
 }
 
-MAKE_HOOK(get_colorB, 0x104B820, Color, void* self)
+MAKE_HOOK(get_colorB, 0x130C4A8, Color, void* self)
 {
     Color color = {0};
     color.r = right_r;
@@ -45,7 +45,7 @@ MAKE_HOOK(get_colorB, 0x104B820, Color, void* self)
 }
 
 // bg colors
-MAKE_HOOK(get_color, 0x10E960C, Color, void* self)
+MAKE_HOOK(get_color, 0x12DC59C, Color, void* self)
 {
     Color color = get_color(self);
     if (fabs(color.r - 0.188235f) < 0.001 && fabs(color.g - 0.619608f) < 0.001 && color.b == 1.0f) {

@@ -36,7 +36,7 @@ void load_mods()
             int infile = open(full_path, O_RDONLY);
             off_t filesize = lseek(infile, 0, SEEK_END);
             lseek(infile, 0, SEEK_SET);
-
+            unlink(MOD_TEMP_PATH);
             int outfile = open(MOD_TEMP_PATH, O_CREAT | O_WRONLY);
             sendfile(outfile, infile, 0, filesize);
             close(infile);

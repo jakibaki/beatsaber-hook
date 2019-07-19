@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 long getRealOffset(long offset);
 
 typedef struct {
@@ -29,3 +33,7 @@ registerInlineHook((uint32_t)(addr_ ## name), (uint32_t)hook_ ## name, (uint32_t
 inlineHook((uint32_t)(addr_ ## name));\
 
 void csstrtostr(cs_string* in, char* out);
+
+#ifdef __cplusplus
+}
+#endif

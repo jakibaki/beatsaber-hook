@@ -1,6 +1,6 @@
 # Beatsaber quest (il2cpp) modloader/function hooking poc
 
-Right now this loads mods (`.so` files) from `/sdcard/Android/data/com.beatgames.beatsaber/files/mods/` and patches out the song-signature-check.
+This just loads mods (`.so` files) from `/sdcard/Android/data/com.beatgames.beatsaber/files/mods/` and includes some examples for function hooking.
 
 Uses https://github.com/ele7enxxh/Android-Inline-Hook + some macros for magic
 

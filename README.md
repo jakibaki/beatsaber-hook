@@ -4,7 +4,7 @@ This just loads mods (`.so` files) from `/sdcard/Android/data/com.beatgames.beat
 
 Uses https://github.com/ele7enxxh/Android-Inline-Hook + some macros for magic
 
-Follow https://koz.io/using-frida-on-android-without-root/ to learn how to inject the modloader-library into the beatsaber apk (with the so built from this instead of frida)
+Follow https://koz.io/using-frida-on-android-without-root/ to learn how to inject the modloader-library into the beatsaber apk (with the so built from this instead of frida) or just use BeatOn.
 
 The function offsets (as well as infos about the structs) can be obtained with il2cppdumper
 
